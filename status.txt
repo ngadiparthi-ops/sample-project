@@ -1,1 +1,1 @@
-BROKEN - something went wrong
+status ok, version 5
