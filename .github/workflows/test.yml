@@ -1,5 +1,8 @@
 name: Simple CI Check
-on: [push]
+on:
+  push:
+  pull_request:
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -12,3 +15,12 @@ jobs:
             exit 1
           fi
           echo "README.md found, check passed."
+
+  deploy:
+    needs: check
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Simulate deployment
+        run: echo "Deploying version ${{ github.ref_name }} to production!"
