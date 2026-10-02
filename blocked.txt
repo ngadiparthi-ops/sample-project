@@ -1,1 +1,2 @@
 SECRET=abc123
+SECRET=brandnewvalue789
